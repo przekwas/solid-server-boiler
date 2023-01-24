@@ -9,7 +9,10 @@ if (envFound.error) {
 }
 
 export default {
-    port: parseInt(process.env.PORT, 10),
+    app: {
+        port: parseInt(process.env.PORT, 10),
+        apiPrefix: process.env.API_PREFIX
+    },
     logs: {
         morgan: process.env.MORGAN
     },
