@@ -1,12 +1,12 @@
-import express from 'express';
-import config from './config';
+import { CONSTANTS } from './config/constants';
+import { expressApp } from './config/expressApp';
+import { databaseConnection } from './config/database';
 
 async function startServer() {
-	const app = express();
+	await databaseConnection();
+	const app = await expressApp();
 
-	(await import('./loaders')).default({ app });
-
-	app.listen(config.app.port, () => console.log(`server running on port ${config.app.port}`)).on(
+	app.listen(CONSTANTS.app.port, () => console.log(`server running on port ${CONSTANTS.app.port}`)).on(
 		'error',
 		error => {
 			console.log(error.message);
