@@ -8,7 +8,7 @@ if (envFound.error) {
     throw new Error('no .env file found');
 }
 
-export default {
+export const CONSTANTS = {
     app: {
         port: parseInt(process.env.PORT, 10),
         apiPrefix: process.env.API_PREFIX
@@ -16,10 +16,11 @@ export default {
     logs: {
         morgan: process.env.MORGAN
     },
-    mysql: {
-        host: process.env.DB_HOST,
-        user: process.env.DB_USER,
-        password: process.env.DB_PASS,
-        database: process.env.DB_SCHEMA,
-    }
+    mongo: {
+        uri: process.env.MONGO_URI,
+    },
+    jwt: {
+        secret: process.env.JWT_SECRET,
+    },
+    greenhouse: "https://harvest.greenhouse.io/v1",
 }

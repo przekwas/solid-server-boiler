@@ -1,11 +1,16 @@
-import { Router } from 'express';
+import { Router } from 'express'
 
-import joinUsRouter from './join-us';
+const router = Router()
 
-export default function () {
-    const app = Router();
+// Routes
+import  { userRoutes } from "../routes/users.routes";
+import { greenhouseRoutes } from './greenhouse.routes';
 
-    joinUsRouter(app);
+/** GET api/status */
+router.get('/status', (req, res) => res.send('OK'))
 
-    return app;
-}
+/** Public Routes */
+router.use('/users', userRoutes)
+router.use('/greenhouse', greenhouseRoutes)
+
+export const appRoutes = router;
