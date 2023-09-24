@@ -22,4 +22,5 @@ export const CONSTANTS = {
     jwt: {
         secret: process.env.JWT_SECRET,
     },
+    greenhouse: "https://harvest.greenhouse.io/v1",
 }
